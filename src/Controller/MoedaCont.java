@@ -5,6 +5,7 @@
 package Controller;
 
 import Model.Moeda;
+import View.InformeSenha;
 import View.Painel2;
 import View.PainelDep;
 import View.PainelSaldo;
@@ -18,6 +19,7 @@ public class MoedaCont {
     private PainelDep view;
     private PainelSaldo viewSaldo;
     private Painel2 view2;
+    private InformeSenha view3;
 
     public MoedaCont(PainelDep view) {
         this.view = view;
@@ -29,6 +31,10 @@ public class MoedaCont {
     
     public MoedaCont(Painel2 view2){
         this.view2 = view2;
+    }
+    
+    public MoedaCont(InformeSenha view3){
+        this.view3 = view3;
     }
     
     public void depositar(Moeda real){
@@ -52,7 +58,7 @@ public class MoedaCont {
         }
     }
     
-    public void comprar(Moeda real, Moeda moeda){
+    public void comprar(Painel2 view2, Moeda real, Moeda moeda){
         String valor = view2.getTxtValorCompra().getText();
         Double valorDouble = Double.valueOf(valor);
         if(valorDouble * moeda.getTxCompra() > real.getSaldo()){

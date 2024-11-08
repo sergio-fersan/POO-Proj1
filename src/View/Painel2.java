@@ -513,7 +513,8 @@ public class Painel2 extends javax.swing.JFrame {
         } else if(cxMoedas.getSelectedItem().equals("Ethereum")){
             moeda = bc;
         }
-        c.comprar(real, moeda);
+        InformeSenha is = new InformeSenha(this, user, "comprar", real, moeda);
+        is.setVisible(true);
     }//GEN-LAST:event_btComprarActionPerformed
 
     /**

@@ -4,11 +4,13 @@
  */
 package View;
 
+import Controller.MoedaCont;
 import Controller.UsuarioCont;
 import Model.Moeda;
 import Model.Usuario;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 
 /**
@@ -24,15 +26,30 @@ public class InformeSenha extends javax.swing.JFrame {
     private Moeda real;
     private Moeda bc;
     private String operacao;
+    private Painel2 view2;
     
     public InformeSenha(Usuario user, String operacao, Moeda real, Moeda bc) {
         initComponents();
         c = new UsuarioCont(this);
+        c2 = new MoedaCont(this);
         this.user = user;
         this.real = real;
         this.bc = bc;
         this.operacao = operacao;
     }
+    
+    public InformeSenha(Painel2 view2, Usuario user, String operacao, Moeda real, Moeda bc) {
+        initComponents();
+        c = new UsuarioCont(this);
+        c2 = new MoedaCont(this);
+        this.user = user;
+        this.real = real;
+        this.bc = bc;
+        this.operacao = operacao;
+        this.view2 = view2;
+    }
+    
+    
 
     public JButton getBtOk() {
         return btOk;
@@ -59,6 +76,7 @@ public class InformeSenha extends javax.swing.JFrame {
     }
 
     private UsuarioCont c;
+    private MoedaCont c2;
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -130,6 +148,11 @@ public class InformeSenha extends javax.swing.JFrame {
                 PainelSaldo p = new PainelSaldo(user, real, bc);
                 p.setVisible(true);
                 this.dispose();
+            }
+        } else if(operacao.equals("comprar")){
+            if(c.verifSenha(user)){
+                c2.comprar(view2, real, bc);
+                JOptionPane.showMessageDialog(this, "Compra realizada com sucesso!!!!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }//GEN-LAST:event_btOkActionPerformed
