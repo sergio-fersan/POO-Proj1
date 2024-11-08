@@ -68,5 +68,6 @@ public class MoedaCont {
             moeda.setSaldo(valorDouble / moeda.getCota());
             JOptionPane.showMessageDialog(view2, "Compra realizada com sucesso!!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
         }
+        view2.getTxtValorCompra().setText("");
     }
 }

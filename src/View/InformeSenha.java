@@ -152,7 +152,7 @@ public class InformeSenha extends javax.swing.JFrame {
         } else if(operacao.equals("comprar")){
             if(c.verifSenha(user)){
                 c2.comprar(view2, real, bc);
-                JOptionPane.showMessageDialog(this, "Compra realizada com sucesso!!!!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
             }
         }
     }//GEN-LAST:event_btOkActionPerformed
