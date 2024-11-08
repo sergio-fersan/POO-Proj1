@@ -20,8 +20,6 @@ public class ProjetoFei {
         Painel2 p = new Painel2(new Usuario("Teste", "1234", "senha123"));
 //        Painel1 p = new Painel1();
         p.setVisible(true);
-        // isso é um teste, po
-        // isso é outro teste, meu
     }
     
 }

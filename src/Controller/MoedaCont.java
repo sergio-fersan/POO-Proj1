@@ -5,6 +5,7 @@
 package Controller;
 
 import Model.Moeda;
+import View.Painel2;
 import View.PainelDep;
 import View.PainelSaldo;
 import javax.swing.JOptionPane;
@@ -16,6 +17,7 @@ import javax.swing.JOptionPane;
 public class MoedaCont {
     private PainelDep view;
     private PainelSaldo viewSaldo;
+    private Painel2 view2;
 
     public MoedaCont(PainelDep view) {
         this.view = view;
@@ -23,6 +25,10 @@ public class MoedaCont {
     
     public MoedaCont(PainelSaldo viewSaldo) {
         this.viewSaldo = viewSaldo;
+    }
+    
+    public MoedaCont(Painel2 view2){
+        this.view2 = view2;
     }
     
     public void depositar(Moeda real){
@@ -43,6 +49,18 @@ public class MoedaCont {
             real.setSaldo((float) (real.getSaldo() - valorDouble));
             JOptionPane.showMessageDialog(view, "Valor sacado com sucesso!!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             view.getTxtValor().setText("");
+        }
+    }
+    
+    public void comprar(Moeda real, Moeda moeda){
+        String valor = view2.getTxtValorCompra().getText();
+        Double valorDouble = Double.valueOf(valor);
+        if(valorDouble * moeda.getTxCompra() > real.getSaldo()){
+            JOptionPane.showMessageDialog(view2, "Saldo insuficiente!!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        } else{
+            real.setSaldo((float) ((real.getSaldo()) - valorDouble * moeda.getTxCompra()));
+            moeda.setSaldo(valorDouble / moeda.getCota());
+            JOptionPane.showMessageDialog(view2, "Compra realizada com sucesso!!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 }

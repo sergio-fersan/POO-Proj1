@@ -4,6 +4,7 @@
  */
 package View;
 
+import Controller.MoedaCont;
 import Model.Moeda;
 import Model.Usuario;
 import javax.swing.JButton;
@@ -23,13 +24,15 @@ public class Painel2 extends javax.swing.JFrame {
      */
     
     Moeda real = new Moeda("Real", 0.0, 0, 0.00, 0.00);
-    Moeda bc = new Moeda("Bitcoin", 0.0, 100.0, 0.02, 0.03);
+    Moeda bc = new Moeda("Bitcoin", 0.0, 100.0, 1.02, 0.03);
+    Moeda moeda;
     private Usuario user;
     String cotaString;
     
     public Painel2(Usuario user) {
         initComponents();
         
+        c = new MoedaCont(this);
         this.user = user;
         this.getLblNome().setText(user.getNome());
         lblMoeda.setText(cxMoedas.getSelectedItem().toString());
@@ -206,7 +209,7 @@ public class Painel2 extends javax.swing.JFrame {
         this.txtValorVenda = txtValorVenda;
     }
 
-    
+    private MoedaCont c;
     
     
 
@@ -267,6 +270,11 @@ public class Painel2 extends javax.swing.JFrame {
         });
 
         btComprar.setText("Comprar");
+        btComprar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btComprarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -393,7 +401,7 @@ public class Painel2 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -445,11 +453,11 @@ public class Painel2 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btAtualizarCota)
                     .addComponent(btAtualizarPag))
-                .addGap(161, 161, 161))
+                .addGap(120, 120, 120))
         );
 
         pack();
@@ -498,6 +506,15 @@ public class Painel2 extends javax.swing.JFrame {
         InformeSenha is = new InformeSenha(user, "consSaldo", real, bc);
         is.setVisible(true);
     }//GEN-LAST:event_btConsActionPerformed
+
+    private void btComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btComprarActionPerformed
+        if(cxMoedas.getSelectedItem().equals("Bitcoin")){
+            moeda = bc;
+        } else if(cxMoedas.getSelectedItem().equals("Ethereum")){
+            moeda = bc;
+        }
+        c.comprar(real, moeda);
+    }//GEN-LAST:event_btComprarActionPerformed
 
     /**
      * @param args the command line arguments

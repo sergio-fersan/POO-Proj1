@@ -10,7 +10,7 @@ package Model;
  */
 public class Moeda {
     private String nome;
-    private float saldo, cota, txCompra, txVenda;
+    private double saldo, cota, txCompra, txVenda;
 
     public Moeda(String nome, double saldo, double cota, double txCompra, double txVenda) {
         this.nome = nome;
@@ -24,34 +24,34 @@ public class Moeda {
     }
     
     public float getSaldo() {
-        return saldo;
+        return (float) saldo;
     }
 
-    public void setSaldo(float saldo) {
+    public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
 
     public float getCota() {
-        return cota;
+        return (float) cota;
     }
 
-    public void setCota(float cota) {
+    public void setCota(double cota) {
         this.cota = cota;
     }
 
     public float getTxCompra() {
-        return txCompra;
+        return (float) txCompra;
     }
 
-    public void setTxCompra(float txCompra) {
+    public void setTxCompra(double txCompra) {
         this.txCompra = txCompra;
     }
 
     public float getTxVenda() {
-        return txVenda;
+        return (float) txVenda;
     }
 
-    public void setTxVenda(float txVenda) {
+    public void setTxVenda(double txVenda) {
         this.txVenda = txVenda;
     }
 
