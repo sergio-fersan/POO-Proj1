@@ -481,7 +481,7 @@ public class Painel2 extends javax.swing.JFrame {
     }//GEN-LAST:event_cxMoedasItemStateChanged
 
     private void btAtualizarPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarPagActionPerformed
-        if((cxMoedas.getSelectedItem()).equals("BitCoin")){
+        if((cxMoedas.getSelectedItem()).equals("Bitcoin")){
             double cota = bc.getCota();
             cotaString = String.valueOf(cota);
             lblMoeda.setText(bc.getNome());
