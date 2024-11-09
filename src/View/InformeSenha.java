@@ -25,6 +25,7 @@ public class InformeSenha extends javax.swing.JFrame {
     private Usuario user;
     private Moeda real;
     private Moeda bc;
+    Moeda moeda;
     private String operacao;
     private Painel2 view2;
     
@@ -137,6 +138,10 @@ public class InformeSenha extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOkActionPerformed
+        if(view2.getCxMoedas().getSelectedItem().toString().equals("Bitcoin")){
+            moeda = bc;
+        }
+        
         if(operacao.equals("sacar")){
             if(c.verifSenha(user)){
                 PainelDep p = new PainelDep(real, 2);
@@ -151,7 +156,12 @@ public class InformeSenha extends javax.swing.JFrame {
             }
         } else if(operacao.equals("comprar")){
             if(c.verifSenha(user)){
-                c2.comprar(view2, real, bc);
+                c2.comprar(view2, real, moeda);
+                this.dispose();
+            }
+        } else if(operacao.equals("vender")){
+            if(c.verifSenha(user)){
+                c2.vender(view2, real, moeda);
                 this.dispose();
             }
         }

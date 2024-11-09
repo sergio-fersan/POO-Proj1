@@ -70,4 +70,18 @@ public class MoedaCont {
         }
         view2.getTxtValorCompra().setText("");
     }
+    
+    public void vender(Painel2 view2, Moeda real, Moeda moeda){
+        String valor = view2.getTxtValorVenda().getText();
+        Double valorDouble = Double.valueOf(valor);
+        if(valorDouble > moeda.getSaldo()){
+            JOptionPane.showMessageDialog(view2, "Saldo insuficiente!!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        } else{
+            double tmp = valorDouble * moeda.getCota();
+            real.setSaldo((float) ((real.getSaldo()) + (tmp - (tmp * moeda.getTxVenda()))));
+            moeda.setSaldo(moeda.getSaldo() - valorDouble);
+            JOptionPane.showMessageDialog(view2, "Venda realizada com sucesso!!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        }
+        view2.getTxtValorVenda().setText("");
+    }
 }

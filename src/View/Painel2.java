@@ -322,6 +322,11 @@ public class Painel2 extends javax.swing.JFrame {
         });
 
         btVender.setText("Vender");
+        btVender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVenderActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -503,7 +508,7 @@ public class Painel2 extends javax.swing.JFrame {
     }//GEN-LAST:event_btSacarActionPerformed
 
     private void btConsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsActionPerformed
-        InformeSenha is = new InformeSenha(user, "consSaldo", real, bc);
+        InformeSenha is = new InformeSenha(this, user, "consSaldo", real, bc);
         is.setVisible(true);
     }//GEN-LAST:event_btConsActionPerformed
 
@@ -516,6 +521,16 @@ public class Painel2 extends javax.swing.JFrame {
         InformeSenha is = new InformeSenha(this, user, "comprar", real, moeda);
         is.setVisible(true);
     }//GEN-LAST:event_btComprarActionPerformed
+
+    private void btVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVenderActionPerformed
+        if(cxMoedas.getSelectedItem().equals("Bitcoin")){
+            moeda = bc;
+        } else if(cxMoedas.getSelectedItem().equals("Ethereum")){
+            moeda = bc;
+        }
+        InformeSenha is = new InformeSenha(this, user, "vender", real, moeda);
+        is.setVisible(true);
+    }//GEN-LAST:event_btVenderActionPerformed
 
     /**
      * @param args the command line arguments
