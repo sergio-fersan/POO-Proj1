@@ -17,7 +17,7 @@ public class ProjetoFei {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Painel2 p = new Painel2(new Usuario("Teste", "1234", "senha123"));
+        Painel2 p = new Painel2(new Usuario("Usuario", "1234", "senha123"));
 //        Painel1 p = new Painel1();
         p.setVisible(true);
     }

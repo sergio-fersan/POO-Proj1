@@ -59,8 +59,20 @@ public class MoedaCont {
             JOptionPane.showMessageDialog(view2, "Saldo insuficiente!!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
         } else{
             real.setSaldo((float) ((real.getSaldo()) - valorDouble * moeda.getTxCompra()));
-            moeda.setSaldo(valorDouble / moeda.getCota());
+            moeda.setSaldo((valorDouble / moeda.getCota()) + moeda.getSaldo());
             JOptionPane.showMessageDialog(view2, "Compra realizada com sucesso!!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    public void vender(Moeda real, Moeda moeda){
+        String valor = view2.getTxtValorVenda().getText();
+        Double valorDouble = Double.valueOf(valor);
+        if(valorDouble > moeda.getSaldo()){
+            JOptionPane.showMessageDialog(view2, "Saldo insuficiente!!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        } else{
+            real.setSaldo((float) ((real.getSaldo()) + valorDouble * moeda.getCota()));
+            moeda.setSaldo(moeda.getSaldo() - valorDouble);
+            JOptionPane.showMessageDialog(view2, "Venda realizada com sucesso!!!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 }

@@ -41,14 +41,6 @@ public class Painel2 extends javax.swing.JFrame {
         lblCota.setText(cotaString);
     }
 
-    public JButton getBtAtualizarCota() {
-        return btAtualizarCota;
-    }
-
-    public void setBtAtualizarCota(JButton btAtualizarCota) {
-        this.btAtualizarCota = btAtualizarCota;
-    }
-
     public JButton getBtAtualizarPag() {
         return btAtualizarPag;
     }
@@ -79,14 +71,6 @@ public class Painel2 extends javax.swing.JFrame {
 
     public void setBtDepositar(JButton btDepositar) {
         this.btDepositar = btDepositar;
-    }
-
-    public JButton getBtExt() {
-        return btExt;
-    }
-
-    public void setBtExt(JButton btExt) {
-        this.btExt = btExt;
     }
 
     public JButton getBtSacar() {
@@ -240,8 +224,6 @@ public class Painel2 extends javax.swing.JFrame {
         btDepositar = new javax.swing.JButton();
         btSacar = new javax.swing.JButton();
         btCons = new javax.swing.JButton();
-        btExt = new javax.swing.JButton();
-        btAtualizarCota = new javax.swing.JButton();
         btAtualizarPag = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -322,6 +304,11 @@ public class Painel2 extends javax.swing.JFrame {
         });
 
         btVender.setText("Vender");
+        btVender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVenderActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -385,10 +372,6 @@ public class Painel2 extends javax.swing.JFrame {
             }
         });
 
-        btExt.setText("Consultar extrato");
-
-        btAtualizarCota.setText("Atualizar cotas");
-
         btAtualizarPag.setText("Atualizar pagina");
         btAtualizarPag.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -403,17 +386,14 @@ public class Painel2 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btDepositar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btCons))
-                            .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btExt))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btDepositar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btCons))
+                        .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblMoeda, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -422,11 +402,8 @@ public class Painel2 extends javax.swing.JFrame {
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblCota, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(btAtualizarCota, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btAtualizarPag, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btAtualizarPag, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
@@ -439,7 +416,6 @@ public class Painel2 extends javax.swing.JFrame {
                 .addComponent(lblNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btExt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btDepositar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btCons, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -454,9 +430,7 @@ public class Painel2 extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btAtualizarCota)
-                    .addComponent(btAtualizarPag))
+                .addComponent(btAtualizarPag)
                 .addGap(120, 120, 120))
         );
 
@@ -516,6 +490,15 @@ public class Painel2 extends javax.swing.JFrame {
         c.comprar(real, moeda);
     }//GEN-LAST:event_btComprarActionPerformed
 
+    private void btVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVenderActionPerformed
+        if(cxMoedas.getSelectedItem().equals("Bitcoin")){
+            moeda = bc;
+        } else if(cxMoedas.getSelectedItem().equals("Ethereum")){
+            moeda = bc;
+        }
+        c.vender(real, moeda);
+    }//GEN-LAST:event_btVenderActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -552,12 +535,10 @@ public class Painel2 extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAtualizarCota;
     private javax.swing.JButton btAtualizarPag;
     private javax.swing.JButton btComprar;
     private javax.swing.JButton btCons;
     private javax.swing.JButton btDepositar;
-    private javax.swing.JButton btExt;
     private javax.swing.JButton btSacar;
     private javax.swing.JButton btVender;
     private javax.swing.JComboBox<String> cxMoedas;
